@@ -8,7 +8,6 @@ import os
 # Bu dosya, kalıcı hafıza için KULLANILMAYACAK (Streamlit'in kendi hafızası var)
 # HISTORY_FILE = "chat_history.json" 
 KNOWLEDGE_FILE = "products.txt"  # Bilgi bankası dosyanız
-API_KEY = "AIzaSyBF_DshM_Tw5-gI8VnI7aGEfytBdgOwBkE"
 
 # --- Anahtar Kontrolü ---
 if "..." in API_KEY or API_KEY == "" or not API_KEY.startswith("AIza"):
