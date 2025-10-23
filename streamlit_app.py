@@ -9,10 +9,14 @@ import os
 # HISTORY_FILE = "chat_history.json" 
 KNOWLEDGE_FILE = "products.txt"  # Bilgi bankası dosyanız
 
-# --- Anahtar Kontrolü ---
-if "..." in API_KEY or API_KEY == "" or not API_KEY.startswith("AIza"):
-    st.error("Lütfen API anahtarınızı kodun içine yapıştırın.")
-    st.stop() # Hata varsa uygulamayı durdur
+try:
+    API_KEY = st.secrets["API_KEY"]
+except KeyError:
+    st.error("Streamlit Secrets'a API anahtarı eklenmemiş! Lütfen 'Manage app' > 'Secrets' bölümünden 'API_KEY = \"AIza...\"' satırını ekleyin.")
+    st.stop()
+except Exception as e:
+    st.error(f"API anahtarı okunurken bir hata oluştu: {e}")
+    st.stop()
 
 # --- Kurumsal Hafıza Fonksiyonu (RAG) ---
 # Bu fonksiyon 'cache'lenir, yani sadece 1 kere çalıştırılır,
